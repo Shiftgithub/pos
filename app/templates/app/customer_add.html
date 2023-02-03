@@ -1,0 +1,16 @@
+{% extends "app/dashboard.html" %}
+{% block title %}Add New Customer{% endblock %}
+
+{% block content %}
+    <div class="">
+       <form method="POST" class="post-form" action="/customer/new">{% csrf_token %}
+            <div class="container">
+                {{form.as_p}}
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+
+            </div>
+       </form>
+    </div>
+{% endblock %}
