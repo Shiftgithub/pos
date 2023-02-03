@@ -27,8 +27,10 @@ def CustomerList(request):
 
 
 def EditCustomer(request, id):
+    names = Customer.objects.all()
     customer = Customer.objects.get(id=id)
-    return render(request, "app/customer_edit.html", {'customer': customer})
+
+    return render(request, "app/customer_edit.html", {'customer': customer, 'names': names})
 
 
 def UpdateCustomer(request, id):

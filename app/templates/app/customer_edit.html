@@ -33,6 +33,17 @@
           <input type="tel" class="form-control" name="nid" id="contact_id" required maxlength="20" value="{{ customer.nid }}" />
         </div>
         <div class="mb-3">
+          <label>Customer NID :</label>
+        </div>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Select a name</option>
+            {% for name in names %}
+              <option value="">{{ customer.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="mb-3">
           <button type="submit" class="btn btn-warning">Update</button>
         </div>
       </div>
