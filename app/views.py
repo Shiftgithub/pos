@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from .forms import CustomerForm
 from .models import Customer
 
@@ -27,9 +28,11 @@ def CustomerList(request):
 
 
 def EditCustomer(request, id):
+    if request.method == "POST":
+        UpdateCustomer(request, id)
+
     names = Customer.objects.all()
     customer = Customer.objects.get(id=id)
-
     return render(request, "app/customer_edit.html", {'customer': customer, 'names': names})
 
 
@@ -38,7 +41,7 @@ def UpdateCustomer(request, id):
     form = CustomerForm(request.POST, instance=customer)
     if form.is_valid():
         form.save()
-        return redirect('/')
+        return HttpResponseRedirect(request.path_info)
     return render(request, "app/customer_edit.html", {'customer': customer})
 
 
