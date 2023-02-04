@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from .forms import CustomerForm
 from .models import Customer
+from django.http import JsonResponse
+from django.core import serializers
 
 
 def dashboard(request):
@@ -25,6 +27,8 @@ def AddCustomer(request):
 def CustomerList(request):
     customers = Customer.objects.all()
     return render(request, "app/customer_list.html", {'customers': customers})
+    # serialized_obj = serializers.serialize('json', [customers, ])
+    # return JsonResponse(serialized_obj)
 
 
 def EditCustomer(request, id):
