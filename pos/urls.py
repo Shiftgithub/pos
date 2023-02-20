@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from app import views
-from file_upload import views
+from myapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    path('', include('file_upload.urls'))
+    path('', include('myapp.urls'))
 ]
